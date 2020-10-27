@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import argparse
+import re
 
 import spotipy
 import spotipy.util as util
@@ -33,8 +34,11 @@ class GetLyrics:
         parser.add_argument("-a", "--artist", type=str, action="store", dest="artist", help="Enter artist.")
         parser.add_argument("-s", "--song", type=str, action="store", dest="song", help="Enter song name.")
         args = parser.parse_args()
-        artist = str(args.artist).replace(" ", "").lower()
-        song = str(args.song).replace(" ", "").lower()
+        
+        regex  = re.compile('[^a-zA-Z0-9]')
+        
+        artist = regex.sub('',str(args.artist)).lower()
+        song = regex.sub('',str(args.song)).lower()
         return artist, song
 
     def send_request(self, artist, song):
