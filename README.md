@@ -3,7 +3,7 @@ A script that can fetch lyrics of music you are currently listening on spotify. 
 
 ### Installation
 ``` 
-pip3 install requirements.txt 
+pip3 install -r requirements.txt 
 ```
 
 ### Usage
